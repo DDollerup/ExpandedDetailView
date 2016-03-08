@@ -1,0 +1,22 @@
+﻿@model ExpandedDetailView.Models.BaseModels.Product
+
+@{
+    ViewBag.Title = "ShowProduct";
+}
+
+<h2>@Model.Name</h2>
+
+<img id="prodImg" src="~/Content/Images/Products/@Model.Image"/>
+
+<ul>
+    <li>
+    </li>
+        <p>Tilføjs dato: @Model.DateAdded.ToLongDateString()</p>
+    <li>
+        <p>Pris: @Model.Price DKK.</p>
+    </li>
+    <li>
+        <p>Antal tilbage: @Model.StorageAmount</p>
+    </li>
+   
+</ul>

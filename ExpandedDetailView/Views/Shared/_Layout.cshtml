@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - My Expanded Detail View</title>
+    <link href="~/Content/CSS/Layout.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <img id="bestWeb" src="~/Content/BestWebsiteHealth.png" />
+
+    <div id="bodyWrapper">
+        <header>
+            Header
+        </header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/Home/Index">Home</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="contentWrapper">
+            @RenderBody()
+        </div>
+        <footer>
+            Footer
+        </footer>
+    </div>
+</body>
+</html>

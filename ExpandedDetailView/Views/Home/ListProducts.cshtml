@@ -1,0 +1,31 @@
+﻿@model List<ExpandedDetailView.Models.BaseModels.Product>
+
+@{
+    ViewBag.Title = "ListProducts";
+}
+
+<h2>ListProducts</h2>
+<hr />
+
+@foreach (ExpandedDetailView.Models.BaseModels.Product product in Model)
+{
+    <a href="/Home/ShowProduct/@product.ProductID">
+        <div class="productBox">
+            <div class="productTitle">
+                @product.Name
+            </div>
+            <div class="productImage">
+                <img src="~/Content/Images/Products/@product.Image" alt="@product.Name" />
+            </div>
+            <div class="productInfo">
+                <div class="productPrice">
+                    Pris: @product.Price DKK.
+                </div>
+                <div class="productStorage">
+                    <span>&diams; @product.StorageAmount stk. tilbage</span>
+                </div>
+            </div>
+        </div>
+    </a>
+}
+
