@@ -22,7 +22,18 @@
                     Pris: @product.Price DKK.
                 </div>
                 <div class="productStorage">
-                    <span>&diams; @product.StorageAmount stk. tilbage</span>
+                    @if (product.StorageAmount > 9)
+                    {
+                        <p style="color:green;">Antal tilbage: @product.StorageAmount</p>
+                    }
+                    else if (product.StorageAmount > 0 && product.StorageAmount < 10)
+                    {
+                        <p style="color:yellow;">Antal tilbage: @product.StorageAmount</p>
+                    }
+                    else
+                    {
+                        <p style="color:red;">Antal tilbage: @product.StorageAmount</p>
+                    }
                 </div>
             </div>
         </div>

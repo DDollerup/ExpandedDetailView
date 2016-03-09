@@ -10,13 +10,23 @@
 
 <ul>
     <li>
-    </li>
         <p>Tilføjs dato: @Model.DateAdded.ToLongDateString()</p>
     <li>
         <p>Pris: @Model.Price DKK.</p>
     </li>
     <li>
-        <p>Antal tilbage: @Model.StorageAmount</p>
+        @if (Model.StorageAmount > 9)
+        {
+        <p style="color:green;">Antal tilbage: @Model.StorageAmount</p>
+        }
+        else if (Model.StorageAmount > 0 && Model.StorageAmount < 10)
+        {
+            <p style="color:yellow;">Antal tilbage: @Model.StorageAmount</p>
+        }
+        else
+        {
+            <p style="color:red;">Antal tilbage: @Model.StorageAmount</p>
+        }
     </li>
    
 </ul>

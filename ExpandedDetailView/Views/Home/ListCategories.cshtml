@@ -1,0 +1,17 @@
+﻿@using ExpandedDetailView.Models.BaseModels
+@model List<Category>
+
+@{
+    ViewBag.Title = "ListCategories";
+}
+
+<h2>ListCategories</h2>
+<hr />
+<ul>
+    @foreach (Category category in Model)
+    {
+        <li>
+            <a href="/Home/ListProducts/@category.CategoryID">@category.Name</a>
+        </li>
+    }
+</ul>

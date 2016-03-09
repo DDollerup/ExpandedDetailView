@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style:none;
 }
 
 a {
@@ -12,8 +13,7 @@ body {
     color: white;
     font-family: 'Comic Sans MS';
     text-decoration: underline;
-    background-image: url('../black-white-tiles.gif');
-    background-repeat: repeat;
+    cursor: progress;
 }
 
 
@@ -43,6 +43,7 @@ header {
     font-size: 100px;
     padding-right: 15px;
     padding-left: 15px;
+    margin-top:30px;
 }
 
 nav {
@@ -65,17 +66,8 @@ nav {
 
 footer {
     height: 50px;
-    background:;
     line-height: 50px;
-    padding-right: 15px;
-    padding-left: 15px;
-    text-align: center;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#efc5ca+0,d24b5a+50,ba2737+51,f18e99+100;Red+Gloss+%233 */
-    background: #efc5ca; /* Old browsers */
-    background: -moz-linear-gradient(top, #efc5ca 0%, #d24b5a 50%, #ba2737 51%, #f18e99 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #efc5ca 0%,#d24b5a 50%,#ba2737 51%,#f18e99 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #efc5ca 0%,#d24b5a 50%,#ba2737 51%,#f18e99 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efc5ca', endColorstr='#f18e99',GradientType=0 ); /* IE6-9 */
+    background-color:palevioletred;
 }
 
 
@@ -108,3 +100,49 @@ footer {
     margin-bottom:10px;
 }
 
+/*This is useful*/
+/*#background{
+    position:fixed;
+    top:0;
+    left:-100%;
+    width:200%;
+    height:100%;
+   
+     background-image: url('../black-white-tiles.gif');
+    background-repeat: repeat;
+    z-index:-1;
+}*/
+
+#bestWebHolder{
+    position:fixed;
+    top:0;
+    right:77px;
+    height:100%;
+    background-image:url('../BestWebsiteHealth_bg.png');
+    background-repeat:repeat;
+    width:200px;
+}
+
+#left{
+    position:fixed;
+    top:0;
+    left:-230%;
+    width:120%;
+    height:100%;
+   
+     background-image: url('../black-white-tiles.gif');
+    background-repeat: repeat;
+    z-index:-1;
+}
+
+#right{
+    position:fixed;
+    top:0;
+    left:-10%;
+    width:120%;
+    height:100%;
+   
+    background-image: url('../black-white-tiles.gif');
+    background-repeat: repeat;
+    z-index:-1;
+}

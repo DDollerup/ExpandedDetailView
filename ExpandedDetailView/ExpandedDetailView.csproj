@@ -90,9 +90,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BestWebsiteHealth.png" />
+    <Content Include="Content\BestWebsiteHealth_bg.png" />
     <Content Include="Content\black-white-tiles.gif" />
     <Content Include="Content\CSS\Layout.css" />
     <Content Include="Content\Images\Products\placeholder.jpg" />
+    <Content Include="Content\Scripts\Colors.js" />
+    <Content Include="Content\Scripts\Footer.js" />
+    <Content Include="Content\Scripts\jquery-ui.min.js" />
+    <Content Include="Content\Sun_Body.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -104,6 +109,7 @@
     </Compile>
     <Compile Include="Models\BaseModels\Category.cs" />
     <Compile Include="Models\BaseModels\Product.cs" />
+    <Compile Include="Models\Factories\CategoryFactory.cs" />
     <Compile Include="Models\Factories\ProductFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -115,6 +121,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ListProducts.cshtml" />
     <Content Include="Views\Home\ShowProduct.cshtml" />
+    <Content Include="Views\Home\ListCategories.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
