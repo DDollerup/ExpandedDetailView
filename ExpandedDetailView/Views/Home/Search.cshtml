@@ -1,0 +1,57 @@
+﻿@using ExpandedDetailView.Models.BaseModels
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<div>
+    <form action="/Home/SearchResult" method="post">
+        <input type="text" name="searchString" />
+        <input type="submit" value="Search" />
+    </form>
+</div>
+<div>
+    @if (TempData["SearchResult"] != null)
+    {
+        foreach (Product product in (TempData["SearchResult"] as List<Product>))
+        {
+            <a href="/Home/ShowProduct/@product.ProductID">
+                <div class="productBox">
+                    <div class="productTitle">
+                        @product.Name
+                    </div>
+                    <div class="productImage">
+                        <img src="~/Content/Images/Products/@product.Image" alt="@product.Name" />
+                    </div>
+                    <div class="productInfo">
+                        <div class="productPrice">
+                            Pris: @product.Price DKK.
+                        </div>
+                        <div class="productStorage">
+                            @if (product.StorageAmount > 9)
+                            {
+                                <p style="color:green;">Antal tilbage: @product.StorageAmount</p>
+                            }
+                            else if (product.StorageAmount > 0 && product.StorageAmount < 10)
+                            {
+                                <p style="color:yellow;">Antal tilbage: @product.StorageAmount</p>
+                            }
+                            else
+                            {
+                                <p style="color:red;">Antal tilbage: @product.StorageAmount</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    }
+    else
+    {
+        <p>
+            You have not searched!
+        </p>
+    }
+</div>

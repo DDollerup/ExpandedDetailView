@@ -122,6 +122,7 @@
     <Content Include="Views\Home\ListProducts.cshtml" />
     <Content Include="Views\Home\ShowProduct.cshtml" />
     <Content Include="Views\Home\ListCategories.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
