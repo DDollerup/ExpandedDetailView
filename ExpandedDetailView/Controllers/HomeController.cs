@@ -75,5 +75,19 @@ namespace ExpandedDetailView.Controllers
             // We the redirect the result to the Search View.
             return RedirectToAction("Search");
         }
+
+        public ActionResult AdvancedSearch()
+        {
+            List<Category> allCategories = categoryFac.GetAll();
+            return View(allCategories);
+        }
+
+        [HttpPost]
+        public ActionResult AdvancedSearchSubmit(int categoryID)
+        {
+            // After getting categoryID from user, we redirect the ID to the ListProduct action
+            // where we reuse the listproducts code
+            return RedirectToAction("ListProducts", new { id = categoryID } );
+        }
     }
 }

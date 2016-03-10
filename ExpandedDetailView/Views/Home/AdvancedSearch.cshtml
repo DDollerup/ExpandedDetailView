@@ -1,0 +1,22 @@
+﻿@using ExpandedDetailView.Models.BaseModels
+@model List<Category>
+
+@{
+    ViewBag.Title = "AdvancedSearch";
+}
+
+<h2>AdvancedSearch</h2>
+<hr />
+
+<div id="TopSearchBar">
+    <form action="/Home/AdvancedSearchSubmit" method="post">
+        <select name="categoryID">
+            <option value="0">Select Category...</option>
+            @foreach (Category category in Model)
+            {
+                <option value="@category.CategoryID">@category.Name</option>
+            }
+        </select>
+        <input type="submit" value="Search" />
+    </form>
+</div>
