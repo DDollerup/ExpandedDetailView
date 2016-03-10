@@ -10,8 +10,14 @@ namespace ExpandedDetailView.Controllers
 {
     public class HomeController : Controller
     {
-        ProductFactory productFac = new ProductFactory();
+        ProductFactory productFac;
         CategoryFactory categoryFac = new CategoryFactory();
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            productFac = new ProductFactory(this.HttpContext);
+            base.OnActionExecuting(filterContext);
+        }
 
         // GET: Home
         public ActionResult Index()
@@ -87,7 +93,29 @@ namespace ExpandedDetailView.Controllers
         {
             // After getting categoryID from user, we redirect the ID to the ListProduct action
             // where we reuse the listproducts code
-            return RedirectToAction("ListProducts", new { id = categoryID } );
+            return RedirectToAction("ListProducts", new { id = categoryID });
+        }
+
+
+        public ActionResult AddProduct()
+        {
+            List<Category> allCategories = categoryFac.GetAll();
+            return View(allCategories);
+        }
+
+        [HttpPost]
+        public ActionResult AddProductSubmit(Product newProduct, HttpPostedFileBase file)
+        {
+            if (file.ContentLength > 0 && file != null)
+            {
+                newProduct.Image = file.FileName;
+                string path = HttpContext.Request.PhysicalApplicationPath;
+                file.SaveAs(path + "/Content/Images/Products/" + file.FileName);
+            }
+
+            productFac.Add(newProduct);
+
+            return RedirectToAction("ListProducts", new { id = 0 });
         }
     }
 }

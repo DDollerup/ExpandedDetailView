@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    list-style:none;
+    list-style: none;
 }
 
 a {
@@ -43,7 +43,7 @@ header {
     font-size: 100px;
     padding-right: 15px;
     padding-left: 15px;
-    margin-top:30px;
+    margin-top: 30px;
 }
 
 nav {
@@ -67,7 +67,7 @@ nav {
 footer {
     height: 50px;
     line-height: 50px;
-    background-color:palevioletred;
+    background-color: palevioletred;
 }
 
 
@@ -80,24 +80,24 @@ footer {
     margin: 10px;
 }
 
-.productTitle{
-    font-size:20px;
-    padding-bottom:10px;
-    border-bottom:1px solid black;
-    margin-bottom:10px;
+.productTitle {
+    font-size: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
 }
 
-.productImage img{
-    width:100%;
+.productImage img {
+    width: 100%;
 }
 
 
 /*ShowProduct*/
 
-#prodImg{
-    margin-top:10px;
-    width:50%;
-    margin-bottom:10px;
+#prodImg {
+    margin-top: 10px;
+    width: 50%;
+    margin-bottom: 10px;
 }
 
 /*This is useful*/
@@ -113,36 +113,39 @@ footer {
     z-index:-1;
 }*/
 
-#bestWebHolder{
-    position:fixed;
-    top:0;
-    right:77px;
-    height:100%;
-    background-image:url('../BestWebsiteHealth_bg.png');
-    background-repeat:repeat;
-    width:200px;
-}
-
-#left{
-    position:fixed;
-    top:0;
-    left:-230%;
-    width:120%;
-    height:100%;
-   
-     background-image: url('../black-white-tiles.gif');
+#bestWebHolder {
+    position: fixed;
+    top: 0;
+    right: 77px;
+    height: 100%;
+    background-image: url('../BestWebsiteHealth_bg.png');
     background-repeat: repeat;
-    z-index:-1;
+    width: 200px;
 }
 
-#right{
-    position:fixed;
-    top:0;
-    left:-10%;
-    width:120%;
-    height:100%;
-   
+#left {
+    position: fixed;
+    top: 0;
+    left: -230%;
+    width: 120%;
+    height: 100%;
     background-image: url('../black-white-tiles.gif');
     background-repeat: repeat;
-    z-index:-1;
+    z-index: -1;
+}
+
+#right {
+    position: fixed;
+    top: 0;
+    left: -10%;
+    width: 120%;
+    height: 100%;
+    background-image: url('../black-white-tiles.gif');
+    background-repeat: repeat;
+    z-index: -1;
+}
+
+#ModelProperties, #ModelForm {
+    float: left;
+    margin:5px;
 }

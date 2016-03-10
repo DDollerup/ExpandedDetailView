@@ -10,57 +10,72 @@ namespace ExpandedDetailView.Models.Factories
     {
         List<Product> allProducts = new List<Product>();
 
-        public ProductFactory()
-        {
-            allProducts.Add(new Product()
-            {
-                ProductID = 1,
-                CategoryID = 1,
-                Name = "Nike Sko",
-                Price = 99,
-                SalePrice = 99,
-                OnSale = false,
-                StorageAmount = 300,
-                Image = "placeholder.jpg",
-                DateAdded = DateTime.Today
-            });
+        private HttpContextBase context;
 
-            allProducts.Add(new Product()
+        public ProductFactory(HttpContextBase context)
+        {
+            this.context = context;
+
+            // If the session ProductList does not exist, we create one
+            if (this.context.Session["ProductList"] == null)
             {
-                ProductID = 2,
-                CategoryID = 2,
-                Name = "Lacoste Sko",
-                Price = 16000,
-                SalePrice = 8000,
-                OnSale = true,
-                StorageAmount = 0,
-                Image = "placeholder.jpg",
-                DateAdded = DateTime.Today
-            });
-            allProducts.Add(new Product()
+                allProducts.Add(new Product()
+                {
+                    ProductID = 1,
+                    CategoryID = 1,
+                    Name = "Nike Sko",
+                    Price = 99,
+                    SalePrice = 99,
+                    OnSale = false,
+                    StorageAmount = 300,
+                    Image = "placeholder.jpg",
+                    DateAdded = DateTime.Today
+                });
+
+                allProducts.Add(new Product()
+                {
+                    ProductID = 2,
+                    CategoryID = 2,
+                    Name = "Lacoste Sko",
+                    Price = 16000,
+                    SalePrice = 8000,
+                    OnSale = true,
+                    StorageAmount = 0,
+                    Image = "placeholder.jpg",
+                    DateAdded = DateTime.Today
+                });
+                allProducts.Add(new Product()
+                {
+                    ProductID = 3,
+                    CategoryID = 3,
+                    Name = "Converse Sko",
+                    Price = 16.50f,
+                    SalePrice = 0,
+                    OnSale = false,
+                    StorageAmount = 5,
+                    Image = "placeholder.jpg",
+                    DateAdded = DateTime.Today
+                });
+                allProducts.Add(new Product()
+                {
+                    ProductID = 4,
+                    CategoryID = 2,
+                    Name = "Lacoste Sko 2",
+                    Price = 16.50f,
+                    SalePrice = 0,
+                    OnSale = false,
+                    StorageAmount = 16,
+                    Image = "placeholder.jpg",
+                    DateAdded = DateTime.Today
+                });
+
+
+                this.context.Session["ProductList"] = allProducts;
+            }
+            else
             {
-                ProductID = 3,
-                CategoryID = 3,
-                Name = "Converse Sko",
-                Price = 16.50f,
-                SalePrice = 0,
-                OnSale = false,
-                StorageAmount = 5,
-                Image = "placeholder.jpg",
-                DateAdded = DateTime.Today
-            });
-            allProducts.Add(new Product()
-            {
-                ProductID = 4,
-                CategoryID = 2,
-                Name = "Lacoste Sko 2",
-                Price = 16.50f,
-                SalePrice = 0,
-                OnSale = false,
-                StorageAmount = 16,
-                Image = "placeholder.jpg",
-                DateAdded = DateTime.Today
-            });
+                allProducts = this.context.Session["ProductList"] as List<Product>;
+            }
         }
 
         public List<Product> GetAll()
@@ -81,6 +96,22 @@ namespace ExpandedDetailView.Models.Factories
         public List<Product> GetProductsByCategoryID(int categoryID)
         {
             return allProducts.Where(x => x.CategoryID == categoryID).ToList();
+        }
+
+        public void Add(Product newProduct)
+        {
+            // We add the product to our List of Products
+            allProducts.Add(newProduct);
+            // And then we update the current session, so that the browser will remember the new list
+            this.context.Session["ProductList"] = allProducts;
+        }
+
+        public void Remove(Product productToDelete)
+        {
+            // We remove the product 'productToDelete' from the list
+            allProducts.Remove(productToDelete);
+            // And then we update the current session, so that the browser will remember the new list
+            this.context.Session["ProductList"] = allProducts;
         }
     }
 }

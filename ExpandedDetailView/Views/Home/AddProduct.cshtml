@@ -1,0 +1,73 @@
+﻿@model List<ExpandedDetailView.Models.BaseModels.Category>
+
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<h2>Add Product</h2>
+
+<hr />
+
+<div id="AdminArea">
+    <div id="ModelProperties">
+        <ul>
+            <li>
+                Name:
+            </li>
+            <li>
+                Price:
+            </li>
+            <li>
+                On Sale:
+            </li>
+            <li>
+                SalePrice:
+            </li>
+            <li>
+                Image:
+            </li>
+            <li>
+                Storage Amount:
+            </li>
+            <li>
+                Category:
+            </li>
+        </ul>
+    </div>
+    <div id="ModelForm">
+        <form action="/Home/AddProductSubmit" method="post" enctype="multipart/form-data">
+            <ul>
+                <li>
+                    <input type="text" name="Name" />
+                </li>
+                <li>
+                    <input type="text" name="Price" />
+                </li>
+                <li>
+                    <input type="checkbox" name="OnSale" />
+                </li>
+                <li>
+                    <input type="text" name="SalePrice" />
+                </li>
+                <li>
+                    <input type="file" name="file" />
+                </li>
+                <li>
+                    <input type="text" name="StorageAmount" />
+                </li>
+                <li>
+                    <select name="CategoryID">
+                        <option value="0">Select Category...</option>
+                        @foreach (ExpandedDetailView.Models.BaseModels.Category category in Model)
+                        {
+                            <option value="@category.CategoryID">@category.Name</option>
+                        }
+                    </select>
+                </li>
+                <li>
+                    <input type="submit" value="Add Product" />
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
