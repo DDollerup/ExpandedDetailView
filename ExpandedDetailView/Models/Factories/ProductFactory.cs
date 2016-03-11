@@ -115,5 +115,23 @@ namespace ExpandedDetailView.Models.Factories
             // And then we update the current session, so that the browser will remember the new list
             this.context.Session["ProductList"] = allProducts;
         }
+
+        public void Update(Product productToUpdate)
+        {
+            Product oldProduct = GetProduct(productToUpdate.ProductID);
+            oldProduct.Name = productToUpdate.Name;
+            oldProduct.Price = productToUpdate.Price;
+
+            if (productToUpdate.Image != null)
+            {
+                oldProduct.Image = productToUpdate.Image; 
+            }
+            oldProduct.OnSale = productToUpdate.OnSale;
+            oldProduct.SalePrice = productToUpdate.SalePrice;
+            oldProduct.StorageAmount = productToUpdate.StorageAmount;
+            oldProduct.CategoryID = productToUpdate.CategoryID;
+
+            this.context.Session["ProductList"] = allProducts;
+        }
     }
 }

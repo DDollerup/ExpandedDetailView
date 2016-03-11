@@ -135,5 +135,41 @@ namespace ExpandedDetailView.Controllers
             return RedirectToAction("RemoveProduct");
         }
 
+
+        public ActionResult EditProductList()
+        {
+            List<Product> allProducts = productFac.GetAll();
+            return View(allProducts);
+        }
+
+        public ActionResult EditProduct(int id = 0)
+        {
+            List<Category> allCategories = categoryFac.GetAll();
+
+            if (id > 0)
+            {
+                ViewBag.ProductToEdit = productFac.GetProduct(id);
+            }
+            
+            return View(allCategories);
+        }
+
+        [HttpPost]
+        public ActionResult EditProductSubmit(Product productToUpdate, HttpPostedFileBase file)
+        {
+            productFac.Update(productToUpdate);
+
+            if (file != null && file.ContentLength > 0)
+            {
+                productToUpdate.Image = file.FileName;
+                string path = HttpContext.Request.PhysicalApplicationPath;
+                file.SaveAs(path + "/Content/Images/Products/" + file.FileName);
+            }
+
+            TempData["MSG"] = "Product: " + productToUpdate.Name + " has been updated.";
+
+            return RedirectToAction("EditProductList");
+        }
+
     }
 }

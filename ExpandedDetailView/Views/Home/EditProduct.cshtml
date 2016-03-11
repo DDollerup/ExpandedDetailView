@@ -1,0 +1,85 @@
+﻿@using ExpandedDetailView.Models.BaseModels
+
+@model List<Category>
+
+@{
+    
+    ViewBag.Title = "EditProduct";
+}
+
+<h2>EditProduct</h2>
+
+<hr />
+
+<div id="AdminArea">
+    <div id="ModelProperties">
+        <ul>
+            <li>
+                Name:
+            </li>
+            <li>
+                Price:
+            </li>
+            <li>
+                On Sale:
+            </li>
+            <li>
+                SalePrice:
+            </li>
+            <li>
+                Image:
+            </li>
+            <li>
+                Storage Amount:
+            </li>
+            <li>
+                Category:
+            </li>
+        </ul>
+    </div>
+    <div id="ModelForm">
+        <form action="/Home/EditProductSubmit" method="post" enctype="multipart/form-data">
+            <ul>
+                <li>
+                    <input type="text" name="Name" value="@((ViewBag.ProductToEdit as Product).Name)" />
+                </li>
+                <li>
+                    <input type="text" name="Price" value="@((ViewBag.ProductToEdit as Product).Price)" />
+                </li>
+                <li>
+                    <input type="checkbox" name="OnSale" value="@((ViewBag.ProductToEdit as Product).OnSale)" />
+                </li>
+                <li>
+                    <input type="text" name="SalePrice" value="@((ViewBag.ProductToEdit as Product).SalePrice)" />
+                </li>
+                <li>
+                    <input type="file" name="file" />
+                    <span>Current Image: @((ViewBag.ProductToEdit as Product).Image)</span>
+                </li>
+                <li>
+                    <input type="text" name="StorageAmount" value="@((ViewBag.ProductToEdit as Product).StorageAmount)" />
+                </li>
+                <li>
+                    <select name="CategoryID">
+                        <option value="0">Select Category...</option>
+                        @foreach (ExpandedDetailView.Models.BaseModels.Category category in Model)
+                        {
+                            if (((ViewBag.ProductToEdit as Product).CategoryID) != category.CategoryID)
+                            {
+                                <option value="@category.CategoryID">@category.Name</option>          
+                            }
+                            else
+                            {
+                                <option value="@category.CategoryID" selected="selected">@category.Name</option>
+                            }
+                        }
+                    </select>
+                </li>
+                <li>
+                    <input type="hidden" value="@((ViewBag.ProductToEdit as Product).ProductID)" name="ProductID" />
+                    <input type="submit" value="Edit Product" />
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

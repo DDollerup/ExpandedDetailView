@@ -1,0 +1,27 @@
+﻿@model List<ExpandedDetailView.Models.BaseModels.Product>
+
+@{
+    ViewBag.Title = "EditProductList";
+}
+
+<h2>EditProductList</h2>
+
+<hr />
+
+@if (TempData["MSG"] != null)
+{
+    <p>
+        @TempData["MSG"]
+    </p>
+}
+
+<ul>
+    @foreach (ExpandedDetailView.Models.BaseModels.Product product in Model)
+    {
+        <li>
+            <form action="/Home/EditProduct/@product.ProductID" method="post">
+                <input type="submit" value="Edit @product.Name" />
+            </form>
+        </li>
+    }
+</ul>
