@@ -117,5 +117,23 @@ namespace ExpandedDetailView.Controllers
 
             return RedirectToAction("ListProducts", new { id = 0 });
         }
+
+        public ActionResult RemoveProduct()
+        {
+            List<Product> allProducts = productFac.GetAll();
+            return View(allProducts);
+        }
+
+        [HttpPost]
+        public ActionResult RemoveProductSubmit(int id)
+        {
+            Product productToDelete = productFac.GetProduct(id);
+            productFac.Remove(productToDelete);
+
+            TempData["MSG"] = "Product: " + productToDelete.Name + " has been deleted.";
+
+            return RedirectToAction("RemoveProduct");
+        }
+
     }
 }

@@ -1,0 +1,27 @@
+﻿@model List<ExpandedDetailView.Models.BaseModels.Product>
+
+@{
+    ViewBag.Title = "RemoveProduct";
+}
+
+<h2>RemoveProduct</h2>
+
+<hr />
+
+@if (TempData["MSG"] != null)
+{
+    <p>
+        @TempData["MSG"]
+    </p>
+}
+
+<ul>
+    @foreach (ExpandedDetailView.Models.BaseModels.Product product in Model)
+    {
+        <li>
+            <form action="/Home/RemoveProductSubmit/@product.ProductID" method="post">
+                <input type="submit" value="Delete @product.Name" />
+            </form>
+        </li>
+    }
+</ul>
