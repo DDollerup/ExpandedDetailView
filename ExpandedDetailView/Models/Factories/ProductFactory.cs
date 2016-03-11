@@ -100,6 +100,8 @@ namespace ExpandedDetailView.Models.Factories
 
         public void Add(Product newProduct)
         {
+            newProduct.ProductID = allProducts.Count + 1;
+            newProduct.DateAdded = DateTime.Now;
             // We add the product to our List of Products
             allProducts.Add(newProduct);
             // And then we update the current session, so that the browser will remember the new list
